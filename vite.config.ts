@@ -9,9 +9,11 @@ export default defineConfig({
     host: "0.0.0.0",
     port: 5173,
     allowedHosts: true,
-    hmr: {
-      overlay: false,
-    },
+    // Background tooling in this workspace causes Vite's dev websocket to
+    // reconnect repeatedly. Disable development hot reload for a stable app;
+    // refresh manually after changing source files.
+    hmr: false,
+    watch: null,
   },
   plugins: [react(), tailwindcss()],
   resolve: {

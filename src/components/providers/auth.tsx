@@ -6,7 +6,7 @@ type AuthState = { user: User | null; session: Session | null; isLoading: boolea
 const AuthContext = createContext<AuthState | null>(null);
 
 async function syncUserProfile(user: User) {
-  const { error } = await supabase.from("users").upsert({
+  const { error } = await supabase.from("profiles").upsert({
     id: user.id,
     email: user.email ?? null,
     name: typeof user.user_metadata.full_name === "string" ? user.user_metadata.full_name : null,
