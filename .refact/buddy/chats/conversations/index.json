@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-02T11:59:14.446579+00:00",
+  "updated_at": "2026-09-02T12:27:56.169202100+00:00",
   "entries": [
     {
       "id": "buddy-buddy_setup_coach-ca4ae7cd-771b-4e55-ad6d-9df15aadb093",
@@ -262,6 +262,35 @@
       "waiting_for_card_ids": [],
       "file_len": 5390,
       "file_modified_unix_ms": 1788350354413
+    },
+    {
+      "id": "buddy-buddy_idle_suggester-8ebcbfe4-7dd0-4dee-b26a-90aeb045b54c",
+      "file_name": "buddy-buddy_idle_suggester-8ebcbfe4-7dd0-4dee-b26a-90aeb045b54c.json",
+      "source": {
+        "kind": "buddy"
+      },
+      "created_at": "2026-09-02T12:27:56.131491900+00:00",
+      "updated_at": "2026-09-02T12:27:56.145114800+00:00",
+      "title": "Idle Suggester",
+      "model": "openai/gpt-3.5-turbo-instruct",
+      "mode": "buddy",
+      "message_count": 2,
+      "root_chat_id": "buddy-buddy_idle_suggester-8ebcbfe4-7dd0-4dee-b26a-90aeb045b54c",
+      "is_title_generated": false,
+      "total_lines_added": 0,
+      "total_lines_removed": 0,
+      "tasks_total": 0,
+      "tasks_done": 0,
+      "tasks_failed": 0,
+      "total_prompt_tokens": 0,
+      "total_completion_tokens": 0,
+      "total_tokens": 0,
+      "total_cache_read_tokens": 0,
+      "total_cache_creation_tokens": 0,
+      "displayable_chat": false,
+      "waiting_for_card_ids": [],
+      "file_len": 1944,
+      "file_modified_unix_ms": 1788352076144
     }
   ]
 }

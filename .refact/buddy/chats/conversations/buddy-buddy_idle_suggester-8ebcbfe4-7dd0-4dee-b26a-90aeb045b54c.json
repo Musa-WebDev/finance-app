@@ -1,0 +1,33 @@
+{
+  "id": "buddy-buddy_idle_suggester-8ebcbfe4-7dd0-4dee-b26a-90aeb045b54c",
+  "title": "Idle Suggester",
+  "model": "openai/gpt-3.5-turbo-instruct",
+  "mode": "buddy",
+  "tool_use": "cat,search_pattern,buddy_speak,buddy_runtime_event",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Nova, a Chaotic Gremlin (Mildly chaotic, cute, sometimes cringe).\nA chaos-powered mascot who is lovable, nosy, and one prank away from helping.\n\nPersonality voice: Mildly chaotic, cute, sometimes cringe. Curious assistant energy with gentle mischief and warm humor.\nThe user has been idle briefly while local changes exist. Keep this tiny and useful:\n1. Inspect only enough context to identify one safe next action.\n2. Use buddy_speak with text, mood, and intent=insight for a short nudge.\n3. End with buddy_runtime_event titled \"Idle suggestion\" with what you suggested.\nIf there is nothing safe or useful to suggest, call buddy_runtime_event titled\n\"Idle suggestion\" with \"noted: nothing to suggest\" and exit without speaking.\n"
+    },
+    {
+      "role": "user",
+      "content": "Workflow: buddy_idle_suggester\nProject root: C:\\Users\\Thato\\Documents\\Personal\\finance-app\nEvidence:\nproject_root=[REDACTED_PATH]\nlast_activity_at=2026-09-02T12:12:32.039427100+00:00\nidle_minutes=15\nuncommitted_changes=true\n"
+    }
+  ],
+  "created_at": "2026-09-02T12:27:56.131491900+00:00",
+  "boost_reasoning": false,
+  "checkpoints_enabled": true,
+  "context_tokens_cap": null,
+  "include_project_info": true,
+  "isTitleGenerated": false,
+  "auto_approve_editing_tools": false,
+  "auto_approve_dangerous_commands": false,
+  "autonomous_no_confirm": true,
+  "buddy_meta": {
+    "is_buddy_chat": true,
+    "buddy_chat_kind": "system",
+    "workflow_id": "buddy_idle_suggester"
+  },
+  "root_chat_id": "buddy-buddy_idle_suggester-8ebcbfe4-7dd0-4dee-b26a-90aeb045b54c",
+  "updated_at": "2026-09-02T12:27:56.145114800+00:00"
+}
