@@ -9,9 +9,16 @@ export default function AuthCallback() {
   const [error, setError] = useState<string | null>(null);
   useEffect(() => {
     const code = new URLSearchParams(window.location.search).get("code");
-    if (!code) { navigate("/", { replace: true }); return; }
-    supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
-      if (error) setError(error.message); else navigate("/", { replace: true });
+    if (code) {
+      supabase.auth.exchangeCodeForSession(code).then(({ error }) => {
+        if (error) setError(error.message); else navigate("/", { replace: true });
+      });
+      return;
+    }
+    supabase.auth.getSession().then(({ data, error }) => {
+      if (error) setError(error.message);
+      else if (data.session) navigate("/", { replace: true });
+      else setError("The sign-in link is invalid or has expired. Request a new one.");
     });
   }, [navigate]);
 

@@ -16,7 +16,7 @@ import { Empty, EmptyHeader, EmptyMedia, EmptyTitle, EmptyDescription, EmptyCont
 import { PieChart } from "lucide-react";
 
 export default function BudgetInner() {
-  const { data: scenarios, isLoading } = useScenarios();
+  const { data: scenarios = [], isLoading, error } = useScenarios();
   const setActive = useSetActiveScenario();
   const deleteScenario = useDeleteScenario();
 
@@ -98,6 +98,7 @@ export default function BudgetInner() {
           </Button>
         </div>
       </div>
+      {error && <p className="rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive">Could not load budget scenarios: {error.message}. Apply the Supabase migration, then refresh.</p>}
 
       {/* Content */}
       {scenarios.length === 0 ? (

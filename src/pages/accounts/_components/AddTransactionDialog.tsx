@@ -54,14 +54,7 @@ export default function AddTransactionDialog({ open, onClose }: Props) {
   const onSubmit = async (data: FormData) => {
     setLoading(true);
     try {
-      await createTransaction.mutateAsync({
-        name: data.name,
-        amount: data.amount,
-        category: data.category,
-        date: data.date,
-        notes: data.notes,
-        account_id: data.accountId || null,
-      });
+      await createTransaction.mutateAsync({ name: data.name, amount: data.amount, category: data.category ?? null, date: data.date, notes: data.notes ?? null, account_id: data.accountId ?? null });
       toast.success("Transaction added!");
       reset({ date: format(new Date(), "yyyy-MM-dd"), amount: 0 });
       onClose();

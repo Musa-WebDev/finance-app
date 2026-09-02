@@ -17,7 +17,7 @@ const CATEGORY_COLORS: Record<string, string> = {
 };
 
 export default function RecentTransactions() {
-  const { data: txns, isLoading } = useTransactions(8);
+  const { data: txns = [], isLoading } = useTransactions(8);
 
   return (
     <Card className="h-full">
@@ -34,7 +34,7 @@ export default function RecentTransactions() {
             No transactions yet. Connect a bank or add one manually.
           </p>
         ) : (
-          txns?.map((txn) => (
+          txns.map((txn) => (
             <div key={txn.id} className="flex items-center justify-between gap-2 py-1">
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-medium truncate">{txn.name}</p>

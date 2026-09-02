@@ -1,9 +1,12 @@
-import { forwardRef, useCallback, useEffect } from "react";
+import { forwardRef, useCallback, useEffect, useState } from "react";
 import { type VariantProps } from "class-variance-authority";
 import { Loader2, LogIn, LogOut } from "lucide-react";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/use-auth.ts";
 import { Button, buttonVariants } from "@/components/ui/button.tsx";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog.tsx";
+import { Input } from "@/components/ui/input.tsx";
+import { Label } from "@/components/ui/label.tsx";
 
 export interface SignInButtonProps
   extends
@@ -62,6 +65,9 @@ export const SignInButton = forwardRef<HTMLButtonElement, SignInButtonProps>(
     ref,
   ) => {
     const { isAuthenticated, signin, signout, isLoading, error } = useAuth();
+    const [open, setOpen] = useState(false);
+    const [email, setEmail] = useState("");
+    const [sent, setSent] = useState(false);
 
     useEffect(() => {
       if (error) {
@@ -78,18 +84,25 @@ export const SignInButton = forwardRef<HTMLButtonElement, SignInButtonProps>(
         onClick?.(event);
 
         try {
-          if (isAuthenticated) {
-            await signout();
-          } else {
-            await signin();
-          }
+        if (isAuthenticated) await signout();
+        else setOpen(true);
         } catch (err) {
           console.error("Authentication error:", err);
           // Don't prevent the default here as the auth library handles errors
         }
       },
-      [isAuthenticated, signout, signin, onClick],
+      [isAuthenticated, signout, onClick],
     );
+
+    const submitEmail = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      try {
+        await signin(email.trim());
+        setSent(true);
+      } catch (error) {
+        toast.error("Could not send sign-in link", { description: error instanceof Error ? error.message : undefined });
+      }
+    };
 
     const isDisabled = disabled || isLoading;
     const defaultLoadingText = isAuthenticated
@@ -111,7 +124,7 @@ export const SignInButton = forwardRef<HTMLButtonElement, SignInButtonProps>(
       <LogIn className="size-4" />
     );
 
-    return (
+    return <>
       <Button
         ref={ref}
         onClick={handleClick}
@@ -131,7 +144,19 @@ export const SignInButton = forwardRef<HTMLButtonElement, SignInButtonProps>(
         {showIcon && icon}
         {buttonText}
       </Button>
-    );
+      <Dialog open={open} onOpenChange={(nextOpen) => { setOpen(nextOpen); if (!nextOpen) setSent(false); }}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle>{sent ? "Check your inbox" : "Sign in with email"}</DialogTitle>
+            <DialogDescription>{sent ? `We sent a secure sign-in link to ${email}.` : "Enter your email and we’ll send you a secure sign-in link."}</DialogDescription>
+          </DialogHeader>
+          {!sent && <form onSubmit={submitEmail} className="space-y-4">
+            <div className="space-y-2"><Label htmlFor="sign-in-email">Email address</Label><Input id="sign-in-email" type="email" autoComplete="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" /></div>
+            <Button type="submit" className="w-full" disabled={isLoading}>{isLoading ? "Sending link..." : "Email me a sign-in link"}</Button>
+          </form>}
+        </DialogContent>
+      </Dialog>
+    </>;
   },
 );
 

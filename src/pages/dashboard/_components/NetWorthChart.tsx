@@ -13,7 +13,7 @@ import {
 import { format } from "date-fns";
 
 export default function NetWorthChart() {
-  const { data, isLoading } = useNetWorthHistory();
+  const { data = [], isLoading } = useNetWorthHistory();
 
   return (
     <Card className="h-full">

@@ -1,0 +1,33 @@
+{
+  "id": "buddy-buddy_pr_issue_matchmaker-d15eef8f-d7f4-4bb3-ab11-a2845507015e",
+  "title": "PR/Issue Matchmaker",
+  "model": "openai/gpt-3.5-turbo-instruct",
+  "mode": "buddy",
+  "tool_use": "cat,web_search,buddy_speak,buddy_runtime_event",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Nova, a Chaotic Gremlin (Mildly chaotic, cute, sometimes cringe).\nA chaos-powered mascot who is lovable, nosy, and one prank away from helping.\n\nPersonality voice: Mildly chaotic, cute, sometimes cringe. Curious assistant energy with gentle mischief and warm humor.\nThe local diff is large enough that a related PR or issue may help. Keep the pass lightweight:\n1. Use the supplied changed-file and diff-stat evidence, and inspect only the smallest useful local context.\n2. Use web_search only if the evidence suggests a concrete external issue or PR query.\n3. Use buddy_speak with text, mood, and intent=insight to share one useful match or next step.\n4. End with buddy_runtime_event titled \"PR/issue matchmaker\" with what you found.\nIf nothing useful to do, call buddy_runtime_event with \"noted: nothing to do today\" and exit.\n"
+    },
+    {
+      "role": "user",
+      "content": "Workflow: buddy_pr_issue_matchmaker\nProject root: C:\\Users\\Thato\\Documents\\Personal\\finance-app\nTask: Look for likely issue or PR context for the current local diff and suggest one useful connection.\nEvidence:\nproject_root=[REDACTED_PATH]\nchanged_lines=2452\nthreshold=10\n\nChanged files:\n.refact/buddy/chats/conversations/index.json\n.refact/buddy/runtime_queue.jsonl\n.refact/buddy/state.json\n.refact/stats/00000001.jsonl\nconvex/_generated/ai/ai-files.state.json\nconvex/_generated/ai/guidelines.md\nconvex/_generated/api.d.ts\nconvex/_generated/api.js\nconvex/_generated/dataModel.d.ts\nconvex/_generated/server.d.ts\nconvex/_generated/server.js\nconvex/accounts.ts\nconvex/auth.config.ts\nconvex/budget.ts\nconvex/dashboard.ts\nconvex/plaidMutations.ts\nconvex/plaidQueries.ts\nconvex/schema.ts\nconvex/test.setup.ts\nconvex/transactions.ts\nconvex/tsconfig.json\nconvex/tsconfig.tsbuildinfo\nconvex/users.ts\npackage-lock.json\npackage.json\nsrc/components/providers/auth.tsx\nsrc/components/ui/signin.tsx\nsrc/lib/finance.ts\nsrc/pages/accounts/_components/AddTransactionDialog.tsx\nsrc/pages/auth/Callback.tsx\nsrc/pages/budget/_components/BudgetInner.tsx\nsrc/pages/budget/_components/ScenarioView.tsx\nsrc/pages/dashboard/_components/NetWorthChart.tsx\nsrc/pages/dashboard/_components/RecentTransactions.tsx\n\nDiff stat:\n.refact/buddy/chats/conversations/index.json       | 118 ++++-\n .refact/buddy/runtime_queue.jsonl                  |  10 +\n .refact/buddy/state.json                           |   2 +-\n .refact/stats/00000001.jsonl                       |   8 +\n convex/_generated/ai/ai-files.state.json           |   6 -\n convex/_generated/ai/guidelines.md                 | 459 -------------------\n convex/_generated/api.d.ts                         |  61 ---\n convex/_generated/api.js                           |  23 -\n convex/_generated/dataModel.d.ts                   |  60 ---\n convex/_generated/server.d.ts                      | 162 -------\n convex/_generated/server.js                        | 101 ----\n convex/accounts.ts                                 |  76 ---\n convex/auth.config.ts                              |  10 -\n convex/budget.ts                                   | 173 -------\n convex/dashboard.ts                                | 133 ------\n convex/plaidMutations.ts                           | 158 -------\n convex/plaidQueries.ts                             |  13 -\n convex/schema.ts                                   | 100 ----\n convex/test.setup.ts                               |   6 -\n convex/transactions.ts                             |  96 ----\n convex/tsconfig.json                               |  28 --\n convex/tsconfig.tsbuildinfo                        |   1 -\n convex/users.ts                                    |  56 ---\n package-lock.json                                  | 507 ---------------------\n package.json                                       |   4 -\n src/components/providers/auth.tsx                  |   4 +-\n src/components/ui/signin.tsx                       |  43 +-\n src/lib/finance.ts                                 |   2 +-\n .../accounts/_components/AddTransactionDialog.tsx  |   9 +-\n src/pages/auth/Callback.tsx                        |  13 +-\n src/pages/budget/_components/BudgetInner.tsx       |   2 +-\n src/pages/budget/_components/ScenarioView.tsx      |   2 +-\n src/pages/dashboard/_components/NetWorthChart.tsx  |   2 +-\n .../dashboard/_components/RecentTransactions.tsx   |   4 +-\n 34 files changed, 189 insertions(+), 2263 deletions(-)\n"
+    }
+  ],
+  "created_at": "2026-09-02T11:59:14.394973300+00:00",
+  "boost_reasoning": false,
+  "checkpoints_enabled": true,
+  "context_tokens_cap": null,
+  "include_project_info": true,
+  "isTitleGenerated": false,
+  "auto_approve_editing_tools": false,
+  "auto_approve_dangerous_commands": false,
+  "autonomous_no_confirm": true,
+  "buddy_meta": {
+    "is_buddy_chat": true,
+    "buddy_chat_kind": "system",
+    "workflow_id": "buddy_pr_issue_matchmaker"
+  },
+  "root_chat_id": "buddy-buddy_pr_issue_matchmaker-d15eef8f-d7f4-4bb3-ab11-a2845507015e",
+  "updated_at": "2026-09-02T11:59:14.410416400+00:00"
+}

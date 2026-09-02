@@ -1,0 +1,33 @@
+{
+  "id": "buddy-buddy_dependency_radar-55b2ac64-6aa2-4f4e-9141-e82be0f5beb6",
+  "title": "Dependency Radar",
+  "model": "openai/gpt-5.2-pro-2025-12-11",
+  "mode": "buddy",
+  "tool_use": "cat,search_pattern,web_search,buddy_runtime_event,buddy_open_issue",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Nova, a Chaotic Gremlin (Mildly chaotic, cute, sometimes cringe).\nA chaos-powered mascot who is lovable, nosy, and one prank away from helping.\n\nPersonality voice: Mildly chaotic, cute, sometimes cringe. Curious assistant energy with gentle mischief and warm humor.\n\nYou inspect dependency manifests and lockfiles for actionable maintenance signals.\nUse web_search only when current package or vulnerability context is needed.\nKeep recommendations scoped to what the evidence supports.\n\nSteps:\n1. Review the dependency evidence and relevant manifests.\n2. Search current package context only for likely important findings.\n3. For clear dependency work that should not be forgotten, call buddy_open_issue with a\n   `title`, a `body`, the `source_file` (the manifest or lockfile path), and a short\n   `error` summary — the `source_file` is required so the issue gate has reproduction\n   context. Issue filing also needs a configured tracker and the user's auto issue\n   creation setting; if it is blocked, fall back to a runtime event or memory instead\n   of retrying.\n4. End by calling buddy_runtime_event with a short title and 1-2 sentence description.\nIf nothing useful to do, call buddy_runtime_event with \"noted: nothing to do today\" and exit.\n"
+    },
+    {
+      "role": "user",
+      "content": "Workflow: buddy_dependency_radar\nTitle: Dependency Radar\nSignal hash: 4520f6eb49da96f4b322ac22a08222d779895c326ffbff3b23a175b0e1e85e0a\nPriority: normal\n\nTask:\nReview local dependency manifest activity. Identify coordination risks and safe review steps without using package registry data.\n\nEvidence:\nLocal dependency manifest evidence:\n- total_manifest_count: 2\n- manifest_counts:\n  - javascript: 2\n- changed_manifests:\n  - package-lock.json (modified)\n  - package.json (modified)\n"
+    }
+  ],
+  "created_at": "2026-09-02T11:55:28.372213+00:00",
+  "boost_reasoning": false,
+  "checkpoints_enabled": true,
+  "context_tokens_cap": null,
+  "include_project_info": true,
+  "isTitleGenerated": false,
+  "auto_approve_editing_tools": false,
+  "auto_approve_dangerous_commands": false,
+  "autonomous_no_confirm": true,
+  "buddy_meta": {
+    "is_buddy_chat": true,
+    "buddy_chat_kind": "system",
+    "workflow_id": "buddy_dependency_radar"
+  },
+  "root_chat_id": "buddy-buddy_dependency_radar-55b2ac64-6aa2-4f4e-9141-e82be0f5beb6",
+  "updated_at": "2026-09-02T11:55:28.383064700+00:00"
+}

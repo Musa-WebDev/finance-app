@@ -7,7 +7,7 @@ import NetWorthChart from "./NetWorthChart.tsx";
 import RecentTransactions from "./RecentTransactions.tsx";
 
 export default function DashboardInner() {
-  const { data: summary, isLoading } = useSummary();
+  const { data: summary, isLoading, error } = useSummary();
 
   const stats = [
     {
@@ -59,6 +59,7 @@ export default function DashboardInner() {
         <h1 className="text-2xl font-bold tracking-tight">Overview</h1>
         <p className="text-muted-foreground text-sm">Your financial snapshot at a glance.</p>
       </div>
+      {error && <p className="rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-3 text-sm text-destructive">Could not load your finance data: {error.message}. Confirm the Supabase migration has been applied.</p>}
 
       {/* Stat Cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">

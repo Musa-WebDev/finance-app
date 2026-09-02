@@ -129,7 +129,7 @@ export default function ScenarioView({ scenario, onSetActive, onDelete }: Props)
           { label: "Monthly Expenses", value: totalExpenses, icon: TrendingDown, color: "text-destructive", bg: "bg-destructive/10" },
           { label: "Cash Flow", value: cashFlow, icon: ArrowRight, color: cashFlow >= 0 ? "text-primary" : "text-destructive", bg: cashFlow >= 0 ? "bg-primary/10" : "bg-destructive/10" },
           { label: "Savings Rate", value: null, icon: ArrowRight, color: savingsRate >= 20 ? "text-green-500" : "text-yellow-500", bg: savingsRate >= 20 ? "bg-green-500/10" : "bg-yellow-500/10" },
-        ].map(({ label, value, color, bg }, i) => (
+        ].map(({ label, value, color }, i) => (
           <motion.div key={label} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.06, duration: 0.3, ease: "easeOut" }}>
             <Card>
               <CardContent className="pt-4 pb-3">

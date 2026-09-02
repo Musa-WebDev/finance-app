@@ -1,0 +1,33 @@
+{
+  "id": "buddy-buddy_model_cost_optimizer-013da93f-3764-49fe-8780-7358e135db66",
+  "title": "Model/Cost Optimizer",
+  "model": "openai/gpt-3.5-turbo-instruct",
+  "mode": "buddy",
+  "tool_use": "cat,buddy_runtime_event,buddy_speak",
+  "messages": [
+    {
+      "role": "system",
+      "content": "You are Nova, a Chaotic Gremlin (Mildly chaotic, cute, sometimes cringe).\nA chaos-powered mascot who is lovable, nosy, and one prank away from helping.\n\nPersonality voice: Mildly chaotic, cute, sometimes cringe. Curious assistant energy with gentle mischief and warm humor.\n\nYou review model usage evidence for obvious cost or latency improvements.\nKeep suggestions practical and avoid changing behavior without clear benefit.\nSpeak only when there is a simple user-facing nudge.\n\nSteps:\n1. Read the model usage and cost evidence.\n2. Identify one concise optimization or decide the current setup is fine.\n3. Speak when a friendly recommendation would help the user.\n4. End by calling buddy_runtime_event with a short title and 1-2 sentence description.\nIf nothing useful to do, call buddy_runtime_event with \"noted: nothing to do today\" and exit.\n"
+    },
+    {
+      "role": "user",
+      "content": "Workflow: buddy_model_cost_optimizer\nTitle: Model/Cost Optimizer\nSignal hash: 7ce0fd0dda8c5d0f5420c588e174d0a1a4fa22c4ad0d938bbd8b289883801889\nPriority: normal\n\nTask:\nAnalyze aggregate LLM usage, reliability, latency, token, and spend signals. Recommend model or configuration optimizations using aggregate stats only; do not infer message content.\n\nEvidence:\nrecent_window max_events=500 calls_bucket=10-24 successful_bucket=0 failed_bucket=10-24 failure_rate_bucket=75%+ total_tokens_bucket=0 prompt_tokens_bucket=0 completion_tokens_bucket=0 cache_read_tokens_bucket=0 cache_creation_tokens_bucket=0 total_cost_usd_bucket=0 avg_duration_bucket=under_5s conversations_bucket=10-24 messages_sent_bucket=10-24\nmodel id=openai/gpt-3.5-turbo-instruct provider=openai model=gpt-3.5-turbo-instruct calls_bucket=10-24 failed_bucket=10-24 failure_rate_bucket=75%+ tokens_bucket=0 cost_usd_bucket=0 avg_duration_bucket=under_5s\nprovider name=openai calls_bucket=10-24 failed_bucket=10-24 failure_rate_bucket=75%+ tokens_bucket=0 cost_usd_bucket=0 total_duration_bucket=10s-19s\n"
+    }
+  ],
+  "created_at": "2026-09-02T11:56:03.769444400+00:00",
+  "boost_reasoning": false,
+  "checkpoints_enabled": true,
+  "context_tokens_cap": null,
+  "include_project_info": true,
+  "isTitleGenerated": false,
+  "auto_approve_editing_tools": false,
+  "auto_approve_dangerous_commands": false,
+  "autonomous_no_confirm": true,
+  "buddy_meta": {
+    "is_buddy_chat": true,
+    "buddy_chat_kind": "system",
+    "workflow_id": "buddy_model_cost_optimizer"
+  },
+  "root_chat_id": "buddy-buddy_model_cost_optimizer-013da93f-3764-49fe-8780-7358e135db66",
+  "updated_at": "2026-09-02T11:56:03.776326900+00:00"
+}
